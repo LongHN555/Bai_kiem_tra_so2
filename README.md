@@ -5,10 +5,11 @@ Phần mở đầu:
   - Lớp: K59KMT.K01
   - Đề tài: Quản lý nhà phân phối công ty
   * Cách làm:
-    1. Thiết kế và khởi tạo cấu trúc dữ liệu
-    2. Xây dựng hàm và vận dụng xây dựng hệ thống
-    3. Xây dựng Store Procedure
-    4. Trigger và Xử lý logic nghiệp vụ
-    5. Cursor và xử lý nghiệp vụ
+  1. Thiết kế và khởi tạo cấu trúc dữ liệu
+  2. Xây dựng hàm và vận dụng xây dựng hệ thống
+  3. Xây dựng Store Procedure
+  4. Trigger và Xử lý logic nghiệp vụ
+  5. Cursor và xử lý nghiệp vụ
 
 Phần 1: Khởi tạo bảng
+Chủ đề quản lý: Hệ thống quản lý nhà phân phối công ty
