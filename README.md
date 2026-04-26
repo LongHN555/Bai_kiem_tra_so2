@@ -35,8 +35,38 @@ Phần 1: Khởi tạo bảng
 
 
 Phần 2: Xây dựng Function
+- Trong SQL Server có 4 loại hàm function build_in:
+  + Table-valued Functions: Các hàm trả về dữ liệu dạng bảng
+  + Scalar-valued Functions: Các hàm trả về một giá trị đơn duy nhất
+  + Aggregate Functions: Các hàm tập hợp
+  + System Functions: Các hàm có sẵn trong hệ thống SQL Server
+- Một vài system functions build_in em tìm hiểu được:
+  + Len(): nằm trong String Functions, trả về kết quả là độ dài của một chuỗi string
+  + Upper()/Lower: Nằm trong String Functions, chuyển về dạng chữ hoa/ chữ thường
+  + Replace(): Thay thế ký tự này bằng ký tự khác
+  + ASCII(): trả về mã số của ký tự
+  + Char(): Đưa vào một con số sẽ trả về ký tự tương ứng trong bảng mã ASCII
+  + Space(): Trả về một chuỗi gồn một số khoảng trắng nhất định
+  + Getdate(): nằm trong Date and time functions: Lấy ngày giờ hiện tại của hệ thống
+  + Dateadd(): Cộng thêm ngày/tháng/năm vào một mốc thời gian
+  + Day(), Month(), Day(): Trả về giá trị ngày, tháng, năm. Dùng để tách ngày, tháng, năm của một mốc thời gian
+  + Datename(): Trả về mội chuỗi ký tự đại diện cho một phần cụ thể của ngày tháng
+  + Sum()/Avg()/: Nằm trong Aggregate functions, dùng để tính tổng/tính trung bình cộng
+  + Count(): Đếm số lượng dòng
+  + Max()/Min(): Tìm giá trị lớn nhất, nhỏ nhất
+  + Abs(): Nằm trong mathematical Functions, Lấy giá trị tuyệt đối của một số
+  + Pi(): trả về số PI
+  + Power(): Tính lũy thừa của một số
+  + Sqrt(): Tính căn bậc hai của một số
 
- 
+
+- Mục đích của việc tự viết hàm là để tạo ra công cụ tử giải quyết công việc, ngoài ra còn nhằm có thể tái sử dụng và có tính đóng gói. Thay vì phải viết đi viết lại một công thức phức tạp hoặc một logic định dạng khác nhau, ta chỉ cần gọi lại hàm đã viết giúp code sạch hơn và dễ dàng sửa lỗi.
+- Có 3 loại hàm chính:
+  + Scalar Function: dùng khi cần tính toán đơn giản, hàm sẽ trả về một giá trị duy nhất
+  + Inline table-valued function: Dùng khi cần trả về 1 bảng dữ liệu hay một hàng đơn giản khi muốn lọc dữ liệu
+  + Multi-statement table-valued function: Dùng khi để lấy dữ liệu ra một bảng nhưng logic quá rắc rối và phức tạp
+- Tuy có nhiều hàm riêng nhưng vẫn không thể bao quát được tất cả công việc của hệ thóng. Việc tự viết hàm có thể đơn giản hóa việc truy vấn và chuẩn hóa dữ liệu, ngoài ra còn thể hiện sự tính toán logic trong từ công việc.
+- Viết scalar function: 
  
 
 
