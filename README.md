@@ -35,11 +35,21 @@ Phần 1: Khởi tạo bảng
 
 
 Phần 2: Xây dựng Function
-- Trong SQL Server có 4 loại hàm function build_in:
-  + Table-valued Functions: Các hàm trả về dữ liệu dạng bảng
-  + Scalar-valued Functions: Các hàm trả về một giá trị đơn duy nhất
-  + Aggregate Functions: Các hàm tập hợp
-  + System Functions: Các hàm có sẵn trong hệ thống SQL Server
+- Trong SQL Server có nhiều loại hàm function build_in như:
+  + Aggregate Functions
+  + Configuration Functions
+  + Cursor Functions
+  + Date and Time Functions
+  + Hierarchy Id Functions
+  + Mathematical Functions
+  + Metadata Functions
+  + Other Functions
+  + Rowset Functions
+  + Security Functions
+  + String Functions
+  + System Statistical Functions
+  + Text and Image Functions
+  + Vector Functions
 - Một vài system functions build_in em tìm hiểu được:
   + Len(): nằm trong String Functions, trả về kết quả là độ dài của một chuỗi string
   + Upper()/Lower: Nằm trong String Functions, chuyển về dạng chữ hoa/ chữ thường
@@ -67,8 +77,32 @@ Phần 2: Xây dựng Function
   + Multi-statement table-valued function: Dùng khi để lấy dữ liệu ra một bảng nhưng logic quá rắc rối và phức tạp
 - Tuy có nhiều hàm riêng nhưng vẫn không thể bao quát được tất cả công việc của hệ thóng. Việc tự viết hàm có thể đơn giản hóa việc truy vấn và chuẩn hóa dữ liệu, ngoài ra còn thể hiện sự tính toán logic trong từ công việc.
 - Viết scalar function: 
- 
+  Hiện tại trong bảng DonHang có một trường TongTien đang cần tự động tính dựa vào trường SoLuong và DonGia của bảng ChiTietDonHang. Em sẽ viết một hàm function để tính TongTien và cập nhập vào trường TongTien. Khi đã có hàm function, em khai thác hàm bằng cách thực hiện update vào trường dữ liệu TongTien.
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/21edcd7b-6bf0-4abd-a90c-9034e2591b8f" />
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/41586b75-3146-4398-bee8-40bb2145cbe7" />
+  *Kiểm tra kết quả:
+  <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/52996ab3-2a90-4049-bebc-b1889203113e" />
 
+- Viết Inline Table-valued Function: Viết hàm trả về danh sách các nhà phân phối đang hợp tác và đang xem xét từ bảng NhaPhanPhoi. Khi đã có hàm, em khai thác bằng SELECT và truyền giá trị vào hàm.
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/ce874458-19d0-44b2-a56f-2d3a1d7526f1" />
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/1615a3dd-a61f-4806-a3da-d33ebfa89211" />
+  *Kiểm tra kết quả:
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/01e4698c-9266-40b6-b9c5-86e90ecf5ad2" />
+
+
+- Viết Multi-statement Table-valued Functions: Viết hàm phân loại xếp hạng nhà phân phối theo giá trị TongTien và đặt nhà cung cấp VIP theo TongTien > 1 tỷ. Để thực hiện sắp xếp, em sẽ dùng hàm rownumber() và cách sắp xếp giảm dần desc, dùng left join để có thể lấy được tất cả nhà phân phối trong bảng, dùng group by để gom nhóm các nhà phân phối (nếu có nhiều đơn hàng). Cuối cùng sử dụng select và order by để khai thác hàm đã viết:
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/20b80811-0cb9-40d1-b352-055e4169830c" />
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/0255490f-5483-4d2c-9ac5-cd9475a6e925" />
+
+  *Kết quả thực hiện:
+  <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/6da68a07-8491-4c04-a937-99407093ff57" />
+
+---
+Phần 3: Xây dựng Store Procedure
+
+
+
+  
 
   
 
