@@ -99,6 +99,42 @@ Phần 2: Xây dựng Function
 
 ---
 Phần 3: Xây dựng Store Procedure
+- Trong SQL Server có hỗ trợ rất nhiều Systerm Store Procedure có sẵn. Một vài loại không trả về dữ liệu, có loại trẩ về dữ liệu thông qua tham số output và có loại trả về dữ liệu của lệnh select bên trong sp đó. Em có thể tìm thấy danh sách trong phần Programmability -> Stored procedures -> System Stored Procedures
+- Một vài System sp em tìm hiểu được:
+  + sys.sp_columns: Liệt kê thông tin tất cả các cột trong một bảng
+  + sys.sp_addlogin/sys.sp_droplogin: Thêm hoặc xóa một tài khoản đăng nhập vào sql server
+  + sys.sp_password: thay đổi mật khẩu cho một tài khoản
+- Viết một Store Procedure đơn giản để thực hiện lệnh Insert haocjw Update dữ liệu: Dựa vào trường TongTien của bảng DonHang để xếp hạng các nhà phân phối từ cao xuống thấp, đồng thời thêm một trường rank để xếp loại 'VIP' nếu nhà phân phối đó có TongTien đơn hàng > 1 tỷ. Đầu tiên cần kiểm tra xem đã tồn tại cột rank chưa, nếu chưa thì thêm trường rank. Sau đó sử dụng một bảng tạm thời để cập nhập rank dựa trên tính toán và update dữ liệu. Cuối cùng hiển thị từ cao xuống thấp để kiểm tra. Sử dụng EXEC để chạy
+  *Thêm cột Rank vào bảng:
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/94dcc1ab-083a-403d-bdb6-e115ad08e55f" />
+  *Viết SP:
+  <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/e341378a-55ae-49e2-bf2a-373638d868a5" />
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/ea2c11e6-7e4e-4b58-ac48-9626505a4184" />
+  *Kết quả thực hiện:
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/1d91ff54-d409-44a3-96aa-fb96ead7d04d" />
+
+
+- Viết một Store Procedure có sử dụng tham số output để trả về một giá trị tính toán: Tính toán số lượng chênh lệch giữa lượng hàng có thể cung cấp (SoLuong của bảng SanPham) và lượng hàng đã nhập vào (SoLuong của bảng ChiTietDonHang). Đầu tiên cần khai báo một vài biến tham số, sau đó tính tổng số lượng được đặt và tính toán sự chênh lệnh. Sau khi tạo logic kiểm tra trạng thái cảu sản phẩm, thự thi và hiển thị kết quả:
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/ac901c1a-8407-4806-a517-6dbc626fd9ab" />
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/59baaa33-244a-4969-ab8f-f851cc47b657" />
+  *Kết quả thực hiện:
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/750744cf-4770-40a7-91e8-6a0ec1606338" />
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/74675eaf-dcce-40a2-9a2d-1e521b157f4c" />
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/aed4aa6b-04c8-4888-b8e9-11d80fd5a46f" />
+
+
+- Viết 1 Store Procedure trả về một tập kết quả từ lệnh select sau khi đã join nhiều bảng: Thực hiện kết nối 3 bảng DonHang, NhaPhanPhoi và ChiTietDonHang để lấy ra báo cáo doanh thu trong một khoảng thời gian.
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/21545c68-70cc-4755-ad8f-7cb3f144e682" />
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/1102fb0d-4c28-413e-b0f0-782ee6257f9f" />
+  *Kết quả thực hiện:
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/26195cb5-2a99-439b-b7aa-4d39fda8b725" />
+
+---
+Phần 4: Trigger và xửu lý logic nghiệp vụ
+
+
+
+
 
 
 
