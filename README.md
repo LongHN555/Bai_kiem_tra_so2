@@ -166,10 +166,10 @@
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/89bb6536-1612-4493-b1e5-dd67181a5373" />
 <br>
 => Thông báo hệ thống: <img width="359" height="28" alt="image" src="https://github.com/user-attachments/assets/5386ad06-f568-4599-943f-506d507309ff" />
- - Mã lỗi:
-   + msg217, level 16: Đây là lỗi mức độ trung bình đã bị hệ thống cưỡng bức dừng lại
-   + maximum ... (limit 32): Xảy ra vòng lặp vô hạn khi 2 trigger gọi nhau, nhưng hệ thống chỉ giới hạn 32 lần lặp, khi quá 32 lần sẽ tự ngắt
-=> Nhận xét: Đây là lỗi đệ quy gián tiếp xảy ra do thiết kế các trigger phụ thuộc nhua theo vòng tròn, đó là một sai lầm về kiến trúc. Ngoài ra dựa trên logic khi thiết kế hệ thống, dữ liệu từ bảng A không đủ để có thể thay đổi bảng B, Dữ liệu chỉ cho phép đi từ A đến B việc đi ngược lại đã làm xung đột dữ liệu
+ - Mã lỗi:<br>
++ msg217, level 16: Đây là lỗi mức độ trung bình đã bị hệ thống cưỡng bức dừng lại. <br>
++ maximum ... (limit 32): Xảy ra vòng lặp vô hạn khi 2 trigger gọi nhau, nhưng hệ thống chỉ giới hạn 32 lần lặp, khi quá 32 lần sẽ tự ngắt <br>
+=> Nhận xét: Đây là lỗi đệ quy gián tiếp xảy ra do thiết kế các trigger phụ thuộc nhua theo vòng tròn, đó là một sai lầm về kiến trúc. Ngoài ra dựa trên logic khi thiết kế hệ thống, dữ liệu từ bảng A không đủ để có thể thay đổi bảng B, Dữ liệu chỉ cho phép đi từ A đến B việc đi ngược lại đã làm xung đột dữ liệu <br>
 => Kết luận: Trigger là con dao 2 lưỡi, nếu không thể kiểm soát có thể gây ra lỗi hệ thống nếu không nắm rõ.
 
 
