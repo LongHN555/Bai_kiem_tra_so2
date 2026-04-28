@@ -174,7 +174,22 @@
 
 
 ## Phần 5: Cursor và duyệt dữ liệu
-   
+- Viết một đoạn script sử dụng cursor để duyệt qua danh sách bảng SanPham và in ra thông báo các hàng "đắt tiền" và hàng "bình dân": Đầu tiên cần nạp biến và khai báo cursor. Mở cursor và bắt đầu xử lý logic so sánh DonGia từng mặt hàng, nếu > 10000000 thì in ra hàng "đắt tiền", còn lại là hàng "bình dân". Cài cursor duyệt qua từng bản ghi, sau khi đóng sẽ giải phóng bộ nhớ.
+<img width="959" height="537" alt="image" src="https://github.com/user-attachments/assets/7dea4a05-ed37-48ea-98bf-2415ed5263f7" />
+
+
+*Kết quả: <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/1a099499-1787-44f2-a681-bf407fe8fe9a" />
+<br>
+<br>
+- Thử giải quyết bài toán trên bằng cách không sử dụng cursor: Sủ dụng lệnh case when duyệt qua từng cột MaSP, TenSP, DonGia và xét cột DonGia > 10000000 thì điền "hàng đắt tiền" vào cột ảo [Phân loại] ngược lại điền "hàng bình dân".
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/e69b8cdb-c96d-469d-b1b3-1da929b3c817" />
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/0a9a0bdd-ae75-4566-91cb-2ebdda58c18c" />
+<br>
+=> Kết luận: Thời gian sử dụng case when chạy nhanh hơn vì chạy 1 lượt thay vì duyệt từng bản ghi như cursor
+
+
+
+ 
 
 
 
