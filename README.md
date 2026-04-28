@@ -186,6 +186,19 @@
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/0a9a0bdd-ae75-4566-91cb-2ebdda58c18c" />
 <br>
 => Kết luận: Thời gian sử dụng case when chạy nhanh hơn vì chạy 1 lượt thay vì duyệt từng bản ghi như cursor
+<br>
+<br>
+- Bài toán dùng cursor giải quyết tốt hơn thay vì dùng sql: Mỗi một sản phẩm trong bảng SanPham sẽ được nhận một mã giảm giá voucher bất kỳ, đồng thời tạo một cột voucher vào bảng để lưu số % được giảm giá (0-50).<br>
+  + Tạo một cột Voucher trong bảng SanPham: <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/d754cd6b-ab5b-4b05-8559-a336502e8056" />
+
+  + Tạo cursor: <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/cc31c45d-325f-4b5f-838e-fd8c3903b69c" />
+<img width="958" height="539" alt="image" src="https://github.com/user-attachments/assets/988d77e4-d1d8-4a8a-9914-d228a43bf4f5" />
+
++ Kết quả: <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/f71c4fc4-cc74-42f1-bc25-70ef621ecdfb" />
+
+
+
+
 
 
 
