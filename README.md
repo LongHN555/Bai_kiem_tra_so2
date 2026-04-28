@@ -89,6 +89,7 @@
 <br>
 - Tuy có nhiều hàm riêng nhưng vẫn không thể bao quát được tất cả công việc của hệ thóng. Việc tự viết hàm có thể đơn giản hóa việc truy vấn và chuẩn hóa dữ liệu, ngoài ra còn thể hiện sự tính toán logic trong từ công việc.
 <br>
+<br>
 - Viết scalar function: 
   Hiện tại trong bảng DonHang có một trường TongTien đang cần tự động tính dựa vào trường SoLuong và DonGia của bảng ChiTietDonHang. Em sẽ viết một hàm function để tính TongTien và cập nhập vào trường TongTien. Khi đã có hàm function, em khai thác hàm bằng cách thực hiện update vào trường dữ liệu TongTien.
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/21edcd7b-6bf0-4abd-a90c-9034e2591b8f" />
@@ -118,7 +119,7 @@
   + sys.sp_addlogin/sys.sp_droplogin: Thêm hoặc xóa một tài khoản đăng nhập vào sql server
   + sys.sp_password: thay đổi mật khẩu cho một tài khoản
 <br>
-- Viết một Store Procedure đơn giản để thực hiện lệnh Insert haocjw Update dữ liệu: Dựa vào trường TongTien của bảng DonHang để xếp hạng các nhà phân phối từ cao xuống thấp, đồng thời thêm một trường rank để xếp loại 'VIP' nếu nhà phân phối đó có TongTien đơn hàng > 1 tỷ. Đầu tiên cần kiểm tra xem đã tồn tại cột rank chưa, nếu chưa thì thêm trường rank. Sau đó sử dụng một bảng tạm thời để cập nhập rank dựa trên tính toán và update dữ liệu. Cuối cùng hiển thị từ cao xuống thấp để kiểm tra. Sử dụng EXEC để chạy
+- Viết một Store Procedure đơn giản để thực hiện lệnh Insert haocjw Update dữ liệu: Dựa vào trường TongTien của bảng DonHang để xếp hạng các nhà phân phối từ cao xuống thấp, đồng thời thêm một trường rank để xếp loại 'VIP' nếu nhà phân phối đó có TongTien đơn hàng > 1 tỷ. Đầu tiên cần kiểm tra xem đã tồn tại cột rank chưa, nếu chưa thì thêm trường rank. Sau đó sử dụng một bảng tạm thời để cập nhập rank dựa trên tính toán và update dữ liệu. Cuối cùng hiển thị từ cao xuống thấp để kiểm tra. Sử dụng EXEC để chạy. <br>
   *Thêm cột Rank vào bảng:
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/94dcc1ab-083a-403d-bdb6-e115ad08e55f" />
   *Viết SP:
