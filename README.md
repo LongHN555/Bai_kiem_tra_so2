@@ -61,25 +61,28 @@
   + Vector Functions
 - Một vài system functions build_in em tìm hiểu được:
   + Len(): nằm trong String Functions, trả về kết quả là độ dài của một chuỗi string
-  + Upper()/Lower: Nằm trong String Functions, chuyển về dạng chữ hoa/ chữ thường
+  + Upper()/Lower: Chuyển về dạng chữ hoa/ chữ thường
   + Replace(): Thay thế ký tự này bằng ký tự khác
   + ASCII(): trả về mã số của ký tự
   + Char(): Đưa vào một con số sẽ trả về ký tự tương ứng trong bảng mã ASCII
   + Space(): Trả về một chuỗi gồn một số khoảng trắng nhất định
+<br>
   + Getdate(): nằm trong Date and time functions: Lấy ngày giờ hiện tại của hệ thống
   + Dateadd(): Cộng thêm ngày/tháng/năm vào một mốc thời gian
   + Day(), Month(), Day(): Trả về giá trị ngày, tháng, năm. Dùng để tách ngày, tháng, năm của một mốc thời gian
   + Datename(): Trả về mội chuỗi ký tự đại diện cho một phần cụ thể của ngày tháng
+<br>
   + Sum()/Avg()/: Nằm trong Aggregate functions, dùng để tính tổng/tính trung bình cộng
   + Count(): Đếm số lượng dòng
   + Max()/Min(): Tìm giá trị lớn nhất, nhỏ nhất
+<br>
   + Abs(): Nằm trong mathematical Functions, Lấy giá trị tuyệt đối của một số
   + Pi(): trả về số PI
   + Power(): Tính lũy thừa của một số
   + Sqrt(): Tính căn bậc hai của một số
 
 
-- Mục đích của việc tự viết hàm là để tạo ra công cụ tử giải quyết công việc, ngoài ra còn nhằm có thể tái sử dụng và có tính đóng gói. Thay vì phải viết đi viết lại một công thức phức tạp hoặc một logic định dạng khác nhau, ta chỉ cần gọi lại hàm đã viết giúp code sạch hơn và dễ dàng sửa lỗi.
+- Mục đích của việc tự viết hàm là để tạo ra công cụ tự giải quyết công việc, ngoài ra còn nhằm có thể tái sử dụng và có tính đóng gói. Thay vì phải viết đi viết lại một công thức phức tạp hoặc một logic định dạng khác nhau, ta chỉ cần gọi lại hàm đã viết giúp code sạch hơn và dễ dàng sửa lỗi.
 <br>
 
 - Có 3 loại hàm chính:
@@ -113,13 +116,13 @@
 
 ---
 ## Phần 3: Xây dựng Store Procedure
-- Trong SQL Server có hỗ trợ rất nhiều Systerm Store Procedure có sẵn. Một vài loại không trả về dữ liệu, có loại trẩ về dữ liệu thông qua tham số output và có loại trả về dữ liệu của lệnh select bên trong sp đó. Em có thể tìm thấy danh sách trong phần Programmability -> Stored procedures -> System Stored Procedures
+- Trong SQL Server có hỗ trợ rất nhiều Systerm Store Procedure có sẵn. Một vài loại không trả về dữ liệu, có loại trả về dữ liệu thông qua tham số output và có loại trả về dữ liệu của lệnh select bên trong sp đó. Em có thể tìm thấy danh sách trong phần Programmability -> Stored procedures -> System Stored Procedures
 - Một vài System sp em tìm hiểu được:
   + sys.sp_columns: Liệt kê thông tin tất cả các cột trong một bảng
   + sys.sp_addlogin/sys.sp_droplogin: Thêm hoặc xóa một tài khoản đăng nhập vào sql server
   + sys.sp_password: thay đổi mật khẩu cho một tài khoản
 <br>
-- Viết một Store Procedure đơn giản để thực hiện lệnh Insert haocjw Update dữ liệu: Dựa vào trường TongTien của bảng DonHang để xếp hạng các nhà phân phối từ cao xuống thấp, đồng thời thêm một trường rank để xếp loại 'VIP' nếu nhà phân phối đó có TongTien đơn hàng > 1 tỷ. Đầu tiên cần kiểm tra xem đã tồn tại cột rank chưa, nếu chưa thì thêm trường rank. Sau đó sử dụng một bảng tạm thời để cập nhập rank dựa trên tính toán và update dữ liệu. Cuối cùng hiển thị từ cao xuống thấp để kiểm tra. Sử dụng EXEC để chạy. <br>
+- Viết một Store Procedure đơn giản để thực hiện lệnh Insert hoặc Update dữ liệu: Dựa vào trường TongTien của bảng DonHang để xếp hạng các nhà phân phối từ cao xuống thấp, đồng thời thêm một trường rank để xếp loại 'VIP' nếu nhà phân phối đó có TongTien đơn hàng > 1 tỷ. Đầu tiên cần kiểm tra xem đã tồn tại cột rank chưa, nếu chưa thì thêm trường rank. Sau đó sử dụng một bảng tạm thời để cập nhập rank dựa trên tính toán và update dữ liệu. Cuối cùng hiển thị từ cao xuống thấp để kiểm tra. Sử dụng EXEC để chạy. <br>
   *Thêm cột Rank vào bảng:
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/94dcc1ab-083a-403d-bdb6-e115ad08e55f" />
   *Viết SP:
@@ -129,7 +132,7 @@
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/1d91ff54-d409-44a3-96aa-fb96ead7d04d" />
 
 <br>
-- Viết một Store Procedure có sử dụng tham số output để trả về một giá trị tính toán: Tính toán số lượng chênh lệch giữa lượng hàng có thể cung cấp (SoLuong của bảng SanPham) và lượng hàng đã nhập vào (SoLuong của bảng ChiTietDonHang). Đầu tiên cần khai báo một vài biến tham số, sau đó tính tổng số lượng được đặt và tính toán sự chênh lệnh. Sau khi tạo logic kiểm tra trạng thái cảu sản phẩm, thự thi và hiển thị kết quả:
+- Viết một Store Procedure có sử dụng tham số output để trả về một giá trị tính toán: Tính toán số lượng chênh lệch giữa lượng hàng có thể cung cấp (SoLuong của bảng SanPham) và lượng hàng đã nhập vào (SoLuong của bảng ChiTietDonHang). Đầu tiên cần khai báo một vài biến tham số, sau đó tính tổng số lượng được đặt và tính toán sự chênh lệnh. Sau khi tạo logic kiểm tra trạng thái của sản phẩm, thực thi và hiển thị kết quả:
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/ac901c1a-8407-4806-a517-6dbc626fd9ab" />
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/59baaa33-244a-4969-ab8f-f851cc47b657" />
   *Kết quả thực hiện:
@@ -157,7 +160,7 @@
 <br>
 <br>
 - Kiểm tra Trigger vòng lặp và quan sát hiện tượng đệ quy:
-  + Tạo Trigger ở bảng A (bảng ChiTietDonHang), khi insert vào bảng sẽ cập nhập vào nagr B (DonHang):
+  + Tạo Trigger ở bảng A (bảng ChiTietDonHang), khi insert vào bảng sẽ cập nhập vào bảng B (DonHang):
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/2f7deb58-7c51-421e-b50c-e9d4e135b9f8" />
 <br>
   + tạo trigger ở bảng B cập nhập dữ liệu sang bảng A:
@@ -182,7 +185,7 @@
 *Kết quả: <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/1a099499-1787-44f2-a681-bf407fe8fe9a" />
 <br>
 <br>
-- Thử giải quyết bài toán trên bằng cách không sử dụng cursor: Sủ dụng lệnh case when duyệt qua từng cột MaSP, TenSP, DonGia và xét cột DonGia > 10000000 thì điền "hàng đắt tiền" vào cột ảo [Phân loại] ngược lại điền "hàng bình dân".
+- Thử giải quyết bài toán trên bằng cách không sử dụng cursor: Sử dụng lệnh case when duyệt qua từng cột MaSP, TenSP, DonGia và xét cột DonGia > 10000000 thì điền "hàng đắt tiền" vào cột ảo [Phân loại] ngược lại điền "hàng bình dân".
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/e69b8cdb-c96d-469d-b1b3-1da929b3c817" />
 <img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/0a9a0bdd-ae75-4566-91cb-2ebdda58c18c" />
 <br>
